@@ -122,6 +122,15 @@ class Elvtr:
                         return (floorNeeded2, floorNeeded)
             
             case 1: # 3 floors
+                floorNeeded3 = floorsNeeded[0]
+                current3Dif = currentFloor - floorNeeded3
+                threeCurrentDif = floorNeeded3 - currentFloor
+                below3 = current1Dif < 0
+                above3 = current1Dif > 0
+
+                if below1 and below2 and below3:
+
+                elif above1 and above2 and above3:
 
             case 2: # 4 floors
 
