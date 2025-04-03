@@ -69,3 +69,44 @@ def isValidUserInput(userInput):
                 return True
     else:
         return True
+
+# Returns the number of the requested floor (not floor 1, rather the floor requested 1st); returns 0 if something went wrong
+def closestNum(floorNeededDis, floorNeeded2Dis, *floorsNeededDis):
+    oneTwo = floorNeededDis < floorNeeded2Dis
+    match len(floorsNeededDis):
+        #// 2 floors \\#
+        case 0:
+            if oneTwo:
+                return 1
+            elif not oneTwo:
+                return 2
+            else: return 0
+
+        #// 3 floors \\#
+        case 1:
+            oneThree = floorNeededDis < floorsNeededDis[0]
+            twoThree = floorNeeded2Dis < floorsNeededDis[0]
+            if oneTwo and oneThree:
+                return 1
+            elif (not oneTwo) and twoThree:
+                return 2
+            elif (not oneThree) and (not twoThree):
+                return 3
+            else: return 0
+
+        #// 4 floors \\#
+        case 2:
+            oneThree = floorNeededDis < floorsNeededDis[0]
+            oneFour = floorNeededDis < floorsNeededDis[1]
+            twoThree = floorNeeded2Dis < floorsNeededDis[0]
+            twoFour = floorNeeded2Dis < floorsNeededDis[1]
+            threeFour = floorsNeededDis[0] < floorsNeededDis[1]
+            if oneTwo and oneThree and oneFour:
+                return 1
+            elif (not oneTwo) and twoThree and twoFour:
+                return 2
+            elif (not oneThree) and (not twoThree) and threeFour:
+                return 3
+            elif (not oneFour) and (not twoFour) and (not threeFour):
+                return 4
+            else: return 0
