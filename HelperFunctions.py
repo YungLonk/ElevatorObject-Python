@@ -70,7 +70,8 @@ def isValidUserInput(userInput):
     else:
         return True
 
-# Returns the number of the requested floor (not floor 1, rather the floor requested 1st); returns 0 if something went wrong
+# Returns the number of the requested floor (not floor 1, rather the floor requested 1st)
+# Returns 0 if something went wrong
 def closestNum(floorNeededDis, floorNeeded2Dis, *floorsNeededDis):
     oneTwo = floorNeededDis < floorNeeded2Dis
     match len(floorsNeededDis):
