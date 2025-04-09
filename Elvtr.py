@@ -390,4 +390,51 @@ class Elvtr:
                 if not are: self.efficient(floorNeeded, floorsNeeded[0])
                 else: self.execute(floorNeeded, floorsNeeded[0])
             case 2: # 3 floors needed
+                are = self.areOppositeDirections(floorNeeded, floorsNeeded[0], floorsNeeded[1])
+                if not are: self.efficient(floorNeeded, floorsNeeded[0])
+                else: self.execute(floorNeeded, floorsNeeded[0], floorsNeeded[1])
             case 3: # 4 floors needed
+                are = self.areOppositeDirections(floorNeeded, floorsNeeded[0], floorsNeeded[1], floorsNeeded[2])
+                if not are: self.efficient(floorNeeded, floorsNeeded[0], floorsNeeded[1], floorsNeeded[2])
+                else: self.execute(floorNeeded, floorsNeeded[0], floorsNeeded[1], floorsNeeded[2])
+
+# -------------------- Main Function -------------------- #
+def main():
+    howToUse()
+    el = Elvtr()
+    keepGoing = True
+    while keepGoing:
+        floor = input("Which floor do you need?: ")
+        if not isValidUserInput(floor):
+            userError()
+            keepGoing = True
+            continue
+        elif floor == 'quit':
+            print("Elevator shutting down...")
+            sleep(2)
+            keepGoing = False
+            continue
+        else:
+            floor2, floor3, floor4 = "", "", ""
+            floors = [floor2, floor3, floor4]
+            intFloors = []
+            for floor in floors:
+                floor = input("Which floor do you need? (hit enter if all floors requested): ")
+                while floor == 'quit':
+                    print("You already requested a floor. You must enter more now")
+                    print("")
+                    floor = input("Which floor do you need? (hit enter if all floors requested): ")
+                while not isValidUserInput(floor):
+                    userError()
+                    floor = input("Which floor do you need? (hit enter if all floors requested): ")
+            for i in range(3):
+                if floors[i] != "":
+                    intFloors[i] = int(floors[i])
+            intLen = len(intFloors)
+            if intLen == 1: el.floorReq(intFloors[0])
+            elif intLen == 2: el.floorReq(intFloors[0], intFloors[1])
+            elif intLen == 3: el.floorReq(intFloors[0], intFloors[1], intFloors[2])
+            elif intLen == 4: el.floorReq(intFloors[0], intFloors[1], intFloors[2], intFloors[3])
+
+if __name__ == '__main__':
+    main()
