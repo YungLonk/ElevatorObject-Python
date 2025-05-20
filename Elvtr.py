@@ -418,15 +418,15 @@ def main():
             floor2, floor3, floor4 = "", "", ""
             floors = [floor2, floor3, floor4]
             intFloors = []
-            for floor in floors:
-                floor = input("Which floor do you need? (hit enter if all floors requested): ")
+            for x in floors:
+                x = input("Which floor do you need? (hit enter if all floors requested): ")
                 while floor == 'quit':
                     print("You already requested a floor. You must enter more now")
                     print("")
-                    floor = input("Which floor do you need? (hit enter if all floors requested): ")
-                while not isValidUserInput(floor):
+                    x = input("Which floor do you need? (hit enter if all floors requested): ")
+                while not isValidUserInput(x):
                     userError()
-                    floor = input("Which floor do you need? (hit enter if all floors requested): ")
+                    x = input("Which floor do you need? (hit enter if all floors requested): ")
             for i in range(3):
                 if floors[i] != "":
                     intFloors[i] = int(floors[i])
