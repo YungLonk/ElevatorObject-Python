@@ -416,7 +416,7 @@ def main():
             continue
         else:
             floor2, floor3, floor4 = "", "", ""
-            floors = [floor2, floor3, floor4]
+            floors = [floor, floor2, floor3, floor4]
             intFloors = []
             for x in floors:
                 x = input("Which floor do you need? (hit enter if all floors requested): ")
